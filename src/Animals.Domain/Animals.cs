@@ -6,6 +6,12 @@ public class Cat : Animal, IMakeSound
     public string MakeSound() => "Meow!";
 }
 
+public class Cow : Animal, IMakeSound
+{
+    public Cow(string name) : base(name) { }
+    public string MakeSound() => "Moo!";
+}
+
 public class Dog : Animal, IMakeSound, ICanSwim
 {
     public Dog(string name) : base(name) { }
@@ -13,8 +19,8 @@ public class Dog : Animal, IMakeSound, ICanSwim
     public void Swim() => Console.WriteLine($"{Name} is swimming.");
 }
 
-public class Shark : Animal, ICanSwim
+public class Sheep : Animal, IMakeSound
 {
-    public Shark(string name) : base(name) { }
-    public void Swim() => Console.WriteLine($"{Name} is swimming.");
+    public Sheep(string name) : base(name) { }
+    public string MakeSound() => "Baa!";
 }
