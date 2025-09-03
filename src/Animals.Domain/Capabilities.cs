@@ -1,3 +1,5 @@
+using System;
+
 namespace Animals.Domain
 {
     public interface IMakeSound
