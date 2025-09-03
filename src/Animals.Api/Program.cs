@@ -1,6 +1,10 @@
 using Animals.Domain;
+using Animals.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Register DI
+builder.Services.AddScoped<IAnimalService, AnimalService>();
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -39,21 +43,27 @@ app.UseHttpsRedirection();
 // })
 // .WithName("GetWeatherForecast");
 
-var animals = new List<Animals.Domain.Animal>
-{
-    new Animals.Domain.Cat("Whiskers"),
-    new Animals.Domain.Dog("Buddy"),
-    new Animals.Domain.Sheep("Dolly"),
-    new Animals.Domain.Cow("Bessie")
-};
+// var animals = new List<Animals.Domain.Animal>
+// {
+//     new Animals.Domain.Cat("Whiskers"),
+//     new Animals.Domain.Dog("Buddy"),
+//     new Animals.Domain.Sheep("Dolly"),
+//     new Animals.Domain.Cow("Bessie")
+// };
 
-app.MapGet("/animals", () =>
-{
-    var result = animals.ToArray();
+// app.MapGet("/animals", () =>
+// {
+//     var result = animals.ToArray();
 
+//     return result;
+// })
+// .WithName("GetAnimals");
+
+app.MapGet("/animals", (IAnimalService animalService) =>
+{
+    var result = animalService.GetAll();
     return result;
-})
-.WithName("GetAnimals");
+});
 
 app.Run();
 
