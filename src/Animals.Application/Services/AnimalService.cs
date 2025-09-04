@@ -15,10 +15,10 @@ namespace Animals.Application.Services
             // Initialize any dependencies here
             _animals = new List<Animal>
             {
-                new Cat("Whiskers"),
-                new Cow("Bessie"),
-                new Dog("Rex"),
-                new Sheep("Dolly")
+                new Cat(Guid.NewGuid(), "Whiskers"),
+                new Cow(Guid.NewGuid(), "Bessie"),
+                new Dog(Guid.NewGuid(), "Rex"),
+                new Sheep(Guid.NewGuid(), "Dolly")
             };
         }
 
