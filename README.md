@@ -1,1 +1,1 @@
-# learning-solid
+# solid-animals
