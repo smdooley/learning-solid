@@ -37,10 +37,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/animals", (IAnimalService animalService) =>
+app.MapGet("/animals", async (IAnimalService animalService) =>
 {
-    var result = animalService.GetAll();
-    return result;
+    var result = await animalService.GetAllAsync();
+    return Results.Ok(result);
 });
 
 app.Run();
